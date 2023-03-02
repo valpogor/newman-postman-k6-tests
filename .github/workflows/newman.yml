@@ -29,11 +29,11 @@ jobs:
       - name: Run articles collection 
         if: always() 
         run: newman run "ReqResCollection.postman_collection.json" 
-      - name: Notify on Slack
+      - name: Slack Notification
         uses: rtCamp/action-slack-notify@v2
         env:
           SLACK_CHANNEL: api_tests
           SLACK_COLOR: ${{ job.status }}
-          SLACK_MESSAGE: 'API tests executed was ${{ job.status }}'
-          SLACK_WEBHOOK: https://hooks.slack.com/services/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
-        if: always()     
+          SLACK_MESSAGE: 'API tests executed was failed'
+          SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK }}
+        if: always()   
