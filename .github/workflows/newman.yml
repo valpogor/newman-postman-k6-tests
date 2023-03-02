@@ -27,7 +27,7 @@ jobs:
       - name: Make Directory for results 
         run: mkdir -p testResults
       - name: Run articles collection 
-        if: always 
+        if: always() 
         run: newman run "ReqResCollection.postman_collection.json" 
       - name: Tests results
         uses: actions/upload-artifact@v3
