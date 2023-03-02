@@ -11,7 +11,7 @@ jobs:
     runs-on: ubuntu-latest 
     strategy: 
       matrix:
-        node-version: [12]
+        node-version: [14]
     steps:
       - uses: actions/checkout@v3
       - name: Use Node.js ${{ matrix.node-version }}
@@ -34,7 +34,7 @@ jobs:
         with:
           name: RunReports
           path: testResults
-          if: failure()
+        if: failure()
       - name: Notify on Slack
         uses: rtCamp/action-slack-notify@v2
         env:
