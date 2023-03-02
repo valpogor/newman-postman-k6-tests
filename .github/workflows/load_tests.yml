@@ -1,0 +1,16 @@
+name: K6/LoadTest 
+on:
+  push:
+    branches: [ master ]
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node-version: [14]
+    steps:
+    - uses: actions/checkout@v2
+    - name: Run load test
+      uses: k6io/action@v0.1
+      with:
+        filename: load_tests/scripts/load.js
