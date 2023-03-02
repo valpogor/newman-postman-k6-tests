@@ -29,12 +29,6 @@ jobs:
       - name: Run articles collection 
         if: always() 
         run: newman run "ReqResCollection.postman_collection.json" 
-      - name: Tests results
-        uses: actions/upload-artifact@v3
-        with:
-          name: RunReports
-          path: testResults
-        if: failure()
       - name: Notify on Slack
         uses: rtCamp/action-slack-notify@v2
         env:
