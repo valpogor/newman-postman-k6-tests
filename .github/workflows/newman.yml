@@ -20,7 +20,7 @@ jobs:
           node-version: ${{ matrix.node-version }}
       - name: Install newman 
         run: |
-          npm install -g bootstrap@4.0.0-alpha.o
+          npm install -g bootstrap@4.0.0-alpha.6
           npm install -g newman
           npm install -g newman 
           npm install -g newman-reporter-htmlextra
