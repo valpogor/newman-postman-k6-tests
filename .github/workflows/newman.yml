@@ -34,6 +34,6 @@ jobs:
         env:
           SLACK_CHANNEL: api_tests
           SLACK_COLOR: ${{ job.status }}
-          SLACK_MESSAGE: 'API tests executed was failed'
+          SLACK_MESSAGE: 'API tests executed was ${{ job.status }}'
           SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK }}
         if: always()   
