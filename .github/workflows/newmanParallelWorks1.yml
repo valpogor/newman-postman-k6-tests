@@ -73,7 +73,7 @@ jobs:
           path: ./allure-report
 
       - name: Deploy to GitHub Pages
-        uses: JamesIves/github-pages-deploy-action@<commit-sha>
+        uses: JamesIves/github-pages-deploy-action@4.4.0
         with:
           branch: gh-pages
           folder: ./allure-report
