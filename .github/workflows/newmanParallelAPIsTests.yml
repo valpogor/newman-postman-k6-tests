@@ -39,9 +39,7 @@ jobs:
 
     - name: Run Newman Tests
       run: |
-        mkdir -p allure-results  
         mkdir -p allure-results-${{ matrix.collection }}  
-        newman run your-collection.json -r allure --reporter-allure-export ./allure-results-ReqResCollection
         newman run ${{ matrix.collection }}.postman_collection.json --reporters cli,allure --reporter-allure-export ./allure-results-${{ matrix.collection }} 
     - name: List files
       run: |
