@@ -1,10 +1,9 @@
 name: Newman/ParallelAPItests
-
 on:
  push:
    branches:
      - master
-  workflow_dispatch:
+ workflow_dispatch:
     inputs:
       test_env:
         type: choice
