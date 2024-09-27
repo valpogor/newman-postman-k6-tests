@@ -19,7 +19,7 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        collection: [ReqResCollection.postman_collection.json]  
+        collection: [ReqResCollection]  
     continue-on-error: false
 
     steps:
@@ -40,7 +40,7 @@ jobs:
     - name: Run Newman Tests
       run: |
         mkdir -p allure-results  # Create directory for allure results
-        newman run ${{ matrix.collection }} --reporters cli,allure --reporter-allure-export "./allure-results"
+        newman run ${{ matrix.collection }}.postman_collection.json --reporters cli,allure --reporter-allure-export "./allure-results"
         
     - name: Upload Allure Results as Artifact
       if: success() || failure()  # Ensure this step runs even if the tests fail
@@ -87,6 +87,6 @@ jobs:
         script: |
           const repo = context.repo;
           const reportUrl = `https://${repo.owner}.github.io/${repo.repo}/index.html`;
-          core.summary.addRaw(`### :tada: Allure Report Available!`)
+          core.summary.addRaw(`### :tada: Allure Report`)
                       .addLink(`View Allure Report`, reportUrl)
                       .write();
