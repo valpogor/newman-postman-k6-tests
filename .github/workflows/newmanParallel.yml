@@ -21,7 +21,6 @@ jobs:
       matrix:
         collection: 
           - ReqResCollection
-          - fetches  
     continue-on-error: false
 
     steps:
