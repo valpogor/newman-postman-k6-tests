@@ -1,4 +1,4 @@
-name: Newman/ParallelAPIsTests
+name: Newman/newmanParallelAPIsTests
 on:
   push:
     branches:
