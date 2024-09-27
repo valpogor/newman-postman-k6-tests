@@ -71,19 +71,12 @@ jobs:
         with:
           name: allure-report
           path: ./allure-report
-      - name: Clear GitHub Actions cache
-        uses: actions/cache@v4
-        with:
-          path: ~/work/_actions
-          key: ${{ runner.os }}-actions-cache
-      - name: Deploy to GitHub Pages
-        uses: JamesIves/github-pages-deploy-action@v4.6.6
+      - name: Install rsync 📚
+        run: |
+          apt-get update && apt-get install -y rsync
+      
+      - name: Deploy 🚀
+        uses: JamesIves/github-pages-deploy-action@v4
         with:
           branch: gh-pages
           folder: ./allure-report
-        env:
-          ACCESS_TOKEN: ${{ secrets.TOKEN }}
-          BASE_BRANCH: master # The branch the action should deploy from.
-          BRANCH: gh-pages # The branch the action should deploy to.
-          FOLDER: target # The folder the action should deploy.
-          BUILD_SCRIPT: npm install && npm run-script build
