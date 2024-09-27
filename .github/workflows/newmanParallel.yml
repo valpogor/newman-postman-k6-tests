@@ -39,7 +39,7 @@ jobs:
    - name: Run Newman Tests
      run: |
        mkdir -p allure-results  # Create directory for allure results
-       newman run ${{ matrix.collection }} -e your-environment.json --reporters cli,allure --reporter-allure-export "./allure-results"
+       newman run ${{ matrix.collection }} --reporters cli,allure --reporter-allure-export "./allure-results"
        
    - name: Upload Allure Results as Artifact
      if: success() || failure()  # Ensure this step runs even if the tests fail
