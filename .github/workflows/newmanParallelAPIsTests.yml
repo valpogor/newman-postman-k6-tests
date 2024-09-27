@@ -69,7 +69,7 @@ jobs:
     - name: Download Allure Results
       uses: actions/download-artifact@v4
       with:
-        name: allure-results-${{ matrix.collection }}
+        name: allure-results
         path: ./allure-results-temp
 
     - name: Merge Allure Results
@@ -86,7 +86,7 @@ jobs:
       uses: peaceiris/actions-gh-pages@v4
       with:
         github_token: ${{ secrets.TOKEN }}
-        publish_dir: ./allure-report-${{ matrix.collection }}
+        publish_dir: ./allure-report
 
     - name: Add Allure Report URL to Summary
       uses: actions/github-script@v7
