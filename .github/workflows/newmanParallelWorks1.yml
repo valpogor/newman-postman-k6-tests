@@ -81,3 +81,9 @@ jobs:
         with:
           branch: gh-pages
           folder: ./allure-report
+        env:
+          ACCESS_TOKEN: ${{ secrets.TOKEN }}
+          BASE_BRANCH: master # The branch the action should deploy from.
+          BRANCH: gh-pages # The branch the action should deploy to.
+          FOLDER: target # The folder the action should deploy.
+          BUILD_SCRIPT: npm install && npm run-script build
