@@ -57,6 +57,9 @@ jobs:
   generate-allure-report:
     needs: newman-tests
     runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        collection: [ReqResCollection, fetches]  
     if: always()
 
     steps:
