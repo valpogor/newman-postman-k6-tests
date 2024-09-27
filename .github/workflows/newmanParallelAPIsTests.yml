@@ -19,7 +19,7 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        collection: [ReqResCollection]  
+        collection: [ReqResCollection, fetches]  
     continue-on-error: false
 
     steps:
