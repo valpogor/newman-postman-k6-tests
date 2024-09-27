@@ -72,4 +72,5 @@ jobs:
         uses: JamesIves/github-pages-deploy-action@v4
         with:
           branch: gh-pages
+          github_token: ${{ secrets.TOKEN }}
           folder: ./allure-report
