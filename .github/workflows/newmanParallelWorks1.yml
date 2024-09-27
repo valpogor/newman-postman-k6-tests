@@ -42,27 +42,13 @@ jobs:
     - name: Run Newman Tests
       run: |
         mkdir -p allure-results-${{ matrix.collection }}  # Create a unique directory for each collection's allure results
-        echo "Running collection: ${{ matrix.collection }}.postman_collection.json"
-        newman run ${{ matrix.collection }}.postman_collection.json --reporters cli,allure --reporter-allure-export "allure-results-${{ matrix.collection }}/allure-results.json"  # Export results to correct directory
-        echo "Newman run completed for ${{ matrix.collection }}"
-        
-        echo "Contents of allure-results-${{ matrix.collection }}:"
-        ls -la allure-results-${{ matrix.collection }}  # List contents to verify files exist
-        
-        # Check if any files were generated
-        if [ "$(ls -A allure-results-${{ matrix.collection }})" ]; then
-          echo "Files found in allure-results-${{ matrix.collection }}:"
-          ls -la allure-results-${{ matrix.collection }}
-        else
-          echo "No files were generated in allure-results-${{ matrix.collection }}"
-        fi
-        
+        newman run ${{ matrix.collection }}.postman_collection.json --reporters cli,allure --reporter-allure-export "./allure-results-${{ matrix.collection }}" 
     - name: Upload Allure Results as Artifact
       if: success() || failure()  # Ensure this step runs even if the tests fail
       uses: actions/upload-artifact@v4
       with:
         name: allure-results-${{ matrix.collection }}  # Use a unique name for each artifact
-        path: allure-results-${{ matrix.collection }}/  # Provide the correct path to the allure results directory
+        path: ./allure-results-${{ matrix.collection }}  # Provide the correct path to the allure results directory
         if-no-files-found: warn  # Warn if no files are found
 
   generate-allure-report:
