@@ -82,11 +82,11 @@ jobs:
         publish_dir: ./allure-report
 
     - name: Add Allure Report URL to Summary
-      uses: actions/github-script@v6
+      uses: actions/github-script@v7
       with:
         script: |
           const repo = context.repo;
           const reportUrl = `https://${repo.owner}.github.io/${repo.repo}/index.html`;
-          core.summary.addRaw(`### :tada: Allure Report`)
+          core.summary.addRaw(`### :tada: `)
                       .addLink(`View Allure Report`, reportUrl)
                       .write();
