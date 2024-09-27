@@ -23,7 +23,7 @@ jobs:
           - fetches
     steps:
       - name: Checkout code
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
 
       - name: Install Newman and Allure Reporter
         run: |
@@ -36,7 +36,7 @@ jobs:
           newman run ${{ matrix.collection }}.postman_collection.json -r allure --reporter-allure-export ./allure-results-${{ matrix.collection }}
       
       - name: Upload Allure results as artifacts
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: allure-results-${{ matrix.collection }}
           path: ./allure-results-${{ matrix.collection }}
@@ -46,13 +46,13 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Download Allure results
-        uses: actions/download-artifact@v3
+        uses: actions/download-artifact@v4
         with:
           name: allure-results-ReqResCollection
           path: ./merged-allure-results
 
       - name: Download Allure results
-        uses: actions/download-artifact@v3
+        uses: actions/download-artifact@v4
         with:
           name: allure-results-fetches
           path: ./merged-allure-results
@@ -68,8 +68,8 @@ jobs:
           name: allure-report
           path: ./allure-report
 
-      - name: Publish Allure Report
-        if: always()
-        uses: actions/github-pages@v3
+      - name: Deploy to GitHub Pages
+        uses: JamesIves/github-pages-deploy-action@v4
         with:
-          publish_dir: ./allure-report
+          branch: gh-pages
+          folder: ./allure-report
