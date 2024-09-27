@@ -96,5 +96,5 @@ jobs:
           const repo = context.repo;
           const reportUrl = `https://${repo.owner}.github.io/${repo.repo}/index.html`;
           core.summary.addRaw(`### :tada: `)
-                      .addLink(`View Allure Report - ${{ matrix.collection }}`, reportUrl)
+                      .addLink(`View Allure Report`, reportUrl)
                       .write();
