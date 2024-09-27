@@ -43,7 +43,7 @@ jobs:
         chmod -R 777 ./allure-results-${{ matrix.collection }}  
         newman run ${{ matrix.collection }}.postman_collection.json -r cli,allure --reporter-allure-export ./allure-results-${{ matrix.collection }} 
     - name: Move Allure files to target directory
-      run: mv ./allure-results/* ./allure-results-ReqResCollection/
+      run: mv ./allure-results/* ./allure-results-${{ matrix.collection }}/
     - name: List files
       run: |
         ls -R
