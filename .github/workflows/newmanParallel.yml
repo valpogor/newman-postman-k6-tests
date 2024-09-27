@@ -19,7 +19,7 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        collection: [ReqResCollection.postman_collection.json]  
+        collection: [ReqResCollection.postman_collection.json, fetches.postman_collection.json]  
     continue-on-error: false
 
     steps:
