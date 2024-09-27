@@ -33,7 +33,7 @@ jobs:
       - name: Run Newman Collection
         run: |
           mkdir -p ./allure-results-${{ matrix.collection }}
-          newman run ${{ matrix.collection }}.json -r allure --reporter-allure-export ./allure-results-${{ matrix.collection }}
+          newman run ${{ matrix.collection }}.postman_collection.json -r allure --reporter-allure-export ./allure-results-${{ matrix.collection }}
       
       - name: Upload Allure results as artifacts
         uses: actions/upload-artifact@v3
