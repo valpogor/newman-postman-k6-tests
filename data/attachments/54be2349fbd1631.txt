@@ -1,0 +1,3 @@
+level: log, messages: Request for fetching list of users
+level: log, messages: list of users fetched
+level: log, messages: Response code is : 200

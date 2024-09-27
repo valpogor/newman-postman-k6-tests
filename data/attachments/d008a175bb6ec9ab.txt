@@ -1,0 +1,2 @@
+level: log, messages: list of users fetched
+level: log, messages: Response code is : 400
