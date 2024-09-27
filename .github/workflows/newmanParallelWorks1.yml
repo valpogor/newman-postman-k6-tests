@@ -74,10 +74,6 @@ jobs:
         with:
           name: allure-report
           path: ./allure-report
-      - name: Install and Build 🔧 
-        run: |
-          npm ci
-          npm run build
       - name: Update and Install rsync
         run: |
           sudo apt-get update
