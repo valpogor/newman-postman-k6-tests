@@ -17,9 +17,6 @@ on:
 jobs:
   newman-tests:
     runs-on: ubuntu-latest
-    strategy:
-      matrix:
-        collection: [ReqResCollection]  
     continue-on-error: false
 
     steps:
