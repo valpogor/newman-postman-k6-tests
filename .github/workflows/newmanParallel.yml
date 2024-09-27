@@ -42,7 +42,10 @@ jobs:
     - name: Run Newman Tests
       run: |
         mkdir -p allure-results-${{ matrix.collection }}  # Create a unique directory for each collection's allure results
-        newman run ${{ matrix.collection }}.postman_collection.json --reporters cli,allure --reporter-allure-export "allure-results-${{ matrix.collection }}"  # Export results to correct directory
+        echo "Running collection: ${{ matrix.collection }}.postman_collection.json"
+        newman run ${{ matrix.collection }}.postman_collection.json --reporters cli,allure --reporter-allure-export "allure-results-${{ matrix.collection }}/allure-results.json"  # Export results to the correct directory
+        echo "Contents of allure-results-${{ matrix.collection }}:"
+        ls -la allure-results-${{ matrix.collection }}  # List contents to verify files exist
         
     - name: Upload Allure Results as Artifact
       if: success() || failure()  # Ensure this step runs even if the tests fail
@@ -50,6 +53,7 @@ jobs:
       with:
         name: allure-results-${{ matrix.collection }}  # Use a unique name for each artifact
         path: allure-results-${{ matrix.collection }}/  # Provide the correct path to the allure results directory
+        if-no-files-found: warn  # Warn if no files are found
 
   generate-allure-report:
     needs: newman-tests
