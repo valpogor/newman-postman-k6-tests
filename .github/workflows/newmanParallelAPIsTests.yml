@@ -69,7 +69,7 @@ jobs:
     - name: Download Allure Results
       uses: actions/download-artifact@v4
       with:
-        name: allure-results
+        name: allure-results-${{ matrix.collection }}
         path: ./allure-results-temp
 
     - name: Merge Allure Results
