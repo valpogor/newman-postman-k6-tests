@@ -71,7 +71,11 @@ jobs:
         with:
           name: allure-report
           path: ./allure-report
-
+      - name: Clear GitHub Actions cache
+        uses: actions/cache@v4
+        with:
+          path: ~/work/_actions
+          key: ${{ runner.os }}-actions-cache
       - name: Deploy to GitHub Pages
         uses: JamesIves/github-pages-deploy-action@v4.6.6
         with:
